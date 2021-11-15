@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgendaDAM">
         <activity
+            android:name=".agenda.AgendaActivity"
+            android:exported="true" />
+        <activity
             android:name=".acceso.RegistroActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".acceso.LoginActivity" />
         <activity
             android:name=".acceso.LoginActivity"
             android:exported="false" />
