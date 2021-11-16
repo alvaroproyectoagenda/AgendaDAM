@@ -10,4 +10,11 @@
     <color name="colorFondo">#C5DEF3</color>
     <color name="colorBoton">#2196F3</color>
     <color name="colorBotonOscuro">#04355C</color>
+
+
+    <color name="colorTarea">#FF5722</color>
+    <color name="colorExamen">#673AB7</color>
+    <color name="colorProyecto">#4CAF50</color>
+    <color name="colorConsulta">#FF9800</color>
+    <color name="colorOtros">#2196F3</color>
 </resources>

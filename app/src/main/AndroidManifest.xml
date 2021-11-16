@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgendaDAM">
         <activity
+            android:name=".agenda.FormularioAgendaActivity"
+            android:parentActivityName=".agenda.AgendaActivity"
+            android:exported="true" />
+        <activity
             android:name=".agenda.AgendaActivity"
             android:exported="true" />
         <activity

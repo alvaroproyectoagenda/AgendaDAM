@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Firebase.auth.signOut()
+
         lifecycleScope.launch {
             delay(3000)
             if(Firebase.auth.currentUser!=null){

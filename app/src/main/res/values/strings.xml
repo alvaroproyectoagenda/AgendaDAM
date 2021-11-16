@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AgendaDAM</string>
+
+    <string-array name="tipos">
+        <item>Tarea</item>
+        <item>Examen</item>
+        <item>Proyecto</item>
+        <item>Consulta</item>
+        <item>Otros</item>
+    </string-array>
 </resources>
