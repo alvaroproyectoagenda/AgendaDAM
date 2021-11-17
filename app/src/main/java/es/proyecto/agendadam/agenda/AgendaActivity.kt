@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import es.proyecto.agendadam.MainActivity
 import es.proyecto.agendadam.R
 import es.proyecto.agendadam.databinding.ActivityAgendaBinding
 import es.proyecto.agendadam.utils.Utilities.Companion.EXTRA_ID_TAREA
@@ -82,6 +83,9 @@ class AgendaActivity : AppCompatActivity() {
             setPositiveButton("SI",
                 DialogInterface.OnClickListener { dialog, id ->
                     Firebase.auth.signOut()
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+
                 })
             setNegativeButton("NO",
                 DialogInterface.OnClickListener { dialog, id ->

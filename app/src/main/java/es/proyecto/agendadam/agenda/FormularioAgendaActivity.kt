@@ -95,17 +95,20 @@ class FormularioAgendaActivity : AppCompatActivity() {
         viewModel.addUpateTareas(tarea)
         lifecycleScope.launch {
             viewModel.addTarea.collect {
-                if (it) {
-                    Toast.makeText(applicationContext, "Tarea creada con éxito", Toast.LENGTH_SHORT)
-                        .show()
-                    finish()
-                } else {
-                    Toast.makeText(
-                        applicationContext,
-                        "Ocurrió un error al crear la tarea",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                it?.let{
+                    if (it) {
+                        Toast.makeText(applicationContext, "Tarea creada con éxito", Toast.LENGTH_SHORT)
+                            .show()
+                        finish()
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "Ocurrió un error al crear la tarea",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
+
             }
         }
     }
@@ -123,17 +126,20 @@ class FormularioAgendaActivity : AppCompatActivity() {
         viewModel.addUpateTareas(tarea)
         lifecycleScope.launch {
             viewModel.addTarea.collect {
-                if (it) {
-                    Toast.makeText(applicationContext, "Tarea creada con éxito", Toast.LENGTH_SHORT)
-                        .show()
-                    finish()
-                } else {
-                    Toast.makeText(
-                        applicationContext,
-                        "Ocurrió un error al crear la tarea",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                it?.let{
+                    if (it) {
+                        Toast.makeText(applicationContext, "Tarea modificada con éxito", Toast.LENGTH_SHORT)
+                            .show()
+                        finish()
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "Ocurrió un error al crear la tarea",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
+
             }
         }
     }
@@ -185,10 +191,13 @@ class FormularioAgendaActivity : AppCompatActivity() {
                         viewModel.deleteTarea(idTarea)
                         lifecycleScope.launchWhenCreated {
                             viewModel.removeTarea.collect {
-                                if (it) {
-                                    Toast.makeText(applicationContext, "Tarea borrada", Toast.LENGTH_SHORT).show()
-                                    finish()
+                                it?.let {
+                                    if (it) {
+                                        Toast.makeText(applicationContext, "Tarea borrada", Toast.LENGTH_SHORT).show()
+                                        finish()
+                                    }
                                 }
+
                             }
                         }
 

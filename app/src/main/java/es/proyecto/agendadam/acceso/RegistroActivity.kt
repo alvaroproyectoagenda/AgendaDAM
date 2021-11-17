@@ -48,11 +48,12 @@ class RegistroActivity : AppCompatActivity() {
                         binding.email.text.toString(),
                         binding.contrasena.text.toString()
                     )
+                    observer()
                 }
 
             }
         }
-        observer()
+
 
     }
 
@@ -60,40 +61,46 @@ class RegistroActivity : AppCompatActivity() {
     private fun observer() {
         lifecycleScope.launchWhenStarted {
             viewModel.addUser.collect {
-                if (it) {
-                    binding.progressBar.visibility = View.GONE
-                    Toast.makeText(applicationContext, "Registro completado", Toast.LENGTH_SHORT)
-                        .show()
-                    val intent = Intent(applicationContext, AgendaActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(
-                        applicationContext,
-                        "Error al registrarse, revisa tus credenciales",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                it?.let{
+                    if (it) {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(applicationContext, "Registro completado", Toast.LENGTH_SHORT)
+                            .show()
+                        val intent = Intent(applicationContext, AgendaActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "Error al registrarse, revisa tus credenciales",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
+                    }
                 }
+
             }
         }
         lifecycleScope.launchWhenStarted {
 
             viewModel.register.collect {
-                if (it) {
-                    val user = User(
-                        id = Firebase.auth.uid,
-                        nombre = binding.nombre.text.toString(),
-                        email = binding.email.text.toString()
-                    )
-                    viewModel.addUser(user)
-                } else {
-                    Toast.makeText(
-                        applicationContext,
-                        "Error al registrarse, revisa tus credenciales",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                it?.let{
+                    if (it) {
+                        val user = User(
+                            id = Firebase.auth.uid,
+                            nombre = binding.nombre.text.toString(),
+                            email = binding.email.text.toString()
+                        )
+                        viewModel.addUser(user)
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "Error al registrarse, revisa tus credenciales",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
+
             }
         }
     }

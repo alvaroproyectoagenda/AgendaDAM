@@ -37,22 +37,25 @@ class LoginActivity : AppCompatActivity()  {
                     binding.email.text.toString(),
                     binding.contrasena.text.toString()
                 )
+                observer()
             }
         }
-        observer()
+
     }
 
     private fun observer(){
         lifecycleScope.launch {
             viewModel.login.collect {
-
-                if(it){
-                    val intent = Intent(applicationContext, AgendaActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }else{
-                    Toast.makeText(applicationContext, "Error al acceder, revisa tus credenciales", Toast.LENGTH_SHORT).show()
+                it?.let{
+                    if(it){
+                        val intent = Intent(applicationContext, AgendaActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }else{
+                        Toast.makeText(applicationContext, "Error al acceder, revisa tus credenciales", Toast.LENGTH_SHORT).show()
+                    }
                 }
+
             }
         }
 

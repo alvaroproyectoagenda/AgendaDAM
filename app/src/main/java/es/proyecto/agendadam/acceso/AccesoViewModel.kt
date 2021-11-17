@@ -14,19 +14,19 @@ class AccesoViewModel(): ViewModel() {
     val error: StateFlow<String>
         get() = _error
 
-    private val _login: MutableStateFlow<Boolean> =
-        MutableStateFlow(false)
-    val login: StateFlow<Boolean>
+    private val _login: MutableStateFlow<Boolean?> =
+        MutableStateFlow(null)
+    val login: StateFlow<Boolean?>
         get() = _login
 
-    private val _register: MutableStateFlow<Boolean> =
-        MutableStateFlow(false)
-    val register: StateFlow<Boolean>
+    private val _register: MutableStateFlow<Boolean?> =
+        MutableStateFlow(null)
+    val register: StateFlow<Boolean?>
         get() = _register
 
-    private val _addUser: MutableStateFlow<Boolean> =
-        MutableStateFlow(false)
-    val addUser: StateFlow<Boolean>
+    private val _addUser: MutableStateFlow<Boolean?> =
+        MutableStateFlow(null)
+    val addUser: StateFlow<Boolean?>
         get() = _addUser
 
     fun login(email: String, password: String){
@@ -44,6 +44,7 @@ class AccesoViewModel(): ViewModel() {
     }
 
     fun addUser(user: User){
+
         user.id?.let {
             Firebase.firestore.collection("usuarios")
                 .document(user.id)

@@ -32,14 +32,14 @@ class AgendaViewModel: ViewModel() {
     val asignaturas: StateFlow<List<String>>
         get() = _asignaturas
 
-    private val _addTarea: MutableStateFlow<Boolean> =
-        MutableStateFlow(false)
-    val addTarea: StateFlow<Boolean>
+    private val _addTarea: MutableStateFlow<Boolean?> =
+        MutableStateFlow(null)
+    val addTarea: StateFlow<Boolean?>
         get() = _addTarea
 
-    private val _removeTarea: MutableStateFlow<Boolean> =
-        MutableStateFlow(false)
-    val removeTarea: StateFlow<Boolean>
+    private val _removeTarea: MutableStateFlow<Boolean?> =
+        MutableStateFlow(null)
+    val removeTarea: StateFlow<Boolean?>
         get() = _removeTarea
 
     fun getTareas(){
